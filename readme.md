@@ -1,0 +1,1 @@
+Just a backup of my .vimrc file. If you like, just fork and use it. 
