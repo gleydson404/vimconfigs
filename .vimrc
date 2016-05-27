@@ -84,3 +84,20 @@ let g:multi_cursor_next_key='<C-d>'
 let g:multi_cursor_prev_key='<C-e>'
 let g:multi_cursor_skip_key='<C-x>'
 let g:multi_cursor_quit_key='<Esc>'
+
+
+
+#plugins i'm using
+ctrlp.vim
+nerdtree
+ultisnips
+vim-airline
+vim-colors-solarized
+vim-multiple-cursors
+dilimitMate
+syntastic
+vdebug
+vim-airline-themes
+vim-flake8
+YouCompleteMe
+
