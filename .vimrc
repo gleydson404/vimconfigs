@@ -1,27 +1,27 @@
-"Pantogen configs
+" Pantogen configs
 execute pathogen#infect()
 call pathogen#helptags()
 
-"nerdtrhee configs
+" nerdtrhee configs
 map <C-n> :NERDTreeToggle<CR>
 autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 autocmd StdinReadPre * let s:std_in=1
 
-"YCM python autocomplete
+" YCM python autocomplete
 let g:ycm_python_binary_path = '/usr/bin/python3'
 
-"crt-p config
+" rt-p config
 set runtimepath^=~/.vim/bundle/ctrlp.vim
 
 
 syntax on
-"Syntax highlinghting
+" Syntax highlinghting
 
 set laststatus=2
-"To display the status line always
+" To display the status line always
 
 filetype plugin indent on
-"identation
+" identation
 
 " solarized dark theme
 syntax on
@@ -85,19 +85,35 @@ let g:multi_cursor_prev_key='<C-e>'
 let g:multi_cursor_skip_key='<C-x>'
 let g:multi_cursor_quit_key='<Esc>'
 
+let g:ackprg = 'ag --nogroup --nocolor --column'
+" silver search
+
+let mapleader=","
+" mapping leader key
+
+autocmd BufNewFile,BufReadPost *.aiml set filetype=xml
+" making vim threat aiml like xml
+
+" nmap <Enter> O<Esc>
+" nmap <CR> o<Esc>
+" inset a line with enter, withou enter in mode insert
 
 
-#plugins i'm using
-ctrlp.vim
-nerdtree
-ultisnips
-vim-airline
-vim-colors-solarized
-vim-multiple-cursors
-dilimitMate
-syntastic
-vdebug
-vim-airline-themes
-vim-flake8
-YouCompleteMe
+let g:UltiSnipsSnippetDirectories=["mysnippets"]
+" direcory of my snippets
+
+" plugins im using
+
+" ctrlp.vim
+" nerdtree
+" ultisnips
+" vim-airline
+" vim-colors-solarized
+" vim-multiple-cursors
+" dilimitMate
+" syntastic
+" vdebug
+" vim-airline-themes
+" vim-flake8
+" YouCompleteMe
 
