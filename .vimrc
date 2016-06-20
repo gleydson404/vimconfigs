@@ -8,7 +8,7 @@ autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 autocmd StdinReadPre * let s:std_in=1
 
 " YCM python autocomplete
-let g:ycm_python_binary_path = '/usr/bin/python3'
+let g:ycm_python_binary_path = '/usr/bin/python2'
 
 " rt-p config
 set runtimepath^=~/.vim/bundle/ctrlp.vim
@@ -62,7 +62,9 @@ set smarttab
 " Enable smart-tabs
 set softtabstop=4	
 " Number of spaces per Tab
- 
+au FileType ruby setl sw=2 sts=2 et
+" two spaces by ruby
+
 set ruler	
 " Show row and column ruler information
 
@@ -96,11 +98,31 @@ autocmd BufNewFile,BufReadPost *.aiml set filetype=xml
 
 " nmap <Enter> O<Esc>
 " nmap <CR> o<Esc>
-" inset a line with enter, withou enter in mode insert
+" insert a line with enter, withou enter in mode insert
+
+set guifont=Consolas:h13
+"seting font and font-size
+
+let g:UltiSnipsSnippetDirectories=["UltiSnips"]
+let g:UltiSnipsExpandTrigger="<c-Space>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+
+nnoremap <leader>. :CtrlPTag<cr>
+" ctrlp + ctags
+
+" navigate in vim splits
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
 
 
-let g:UltiSnipsSnippetDirectories=["mysnippets"]
-" direcory of my snippets
+
+nnoremap <leader>p oimport ipdb; ipdb.set_trace()<Esc>
+
+
+
 
 " plugins im using
 
