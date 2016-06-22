@@ -105,7 +105,6 @@ autocmd BufNewFile,BufReadPost *.aiml set filetype=xml
 " insert a line with enter, withou enter in mode insert
 
 set guifont=DejaVu\ Sans\ Mono\ Bold\ 11 
-"set guifont=Monospace\ Bold\ 20
 "seting font and font-size
 
 let g:UltiSnipsSnippetDirectories=["UltiSnips"]
