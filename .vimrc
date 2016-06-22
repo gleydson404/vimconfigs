@@ -10,6 +10,10 @@ autocmd StdinReadPre * let s:std_in=1
 " YCM python autocomplete
 let g:ycm_python_binary_path = '/usr/bin/python2'
 
+" paste and copy outside vim
+set clipboard=unnamedplus
+
+
 " rt-p config
 set runtimepath^=~/.vim/bundle/ctrlp.vim
 
@@ -100,7 +104,8 @@ autocmd BufNewFile,BufReadPost *.aiml set filetype=xml
 " nmap <CR> o<Esc>
 " insert a line with enter, withou enter in mode insert
 
-set guifont=Consolas:h13
+set guifont=DejaVu\ Sans\ Mono\ Bold\ 11 
+"set guifont=Monospace\ Bold\ 20
 "seting font and font-size
 
 let g:UltiSnipsSnippetDirectories=["UltiSnips"]
@@ -117,10 +122,16 @@ nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 
-
+" comment with tcomment
+"nnoremap <C-/> <g-c>
 
 nnoremap <leader>p oimport ipdb; ipdb.set_trace()<Esc>
 
+let g:auto_save = 1  " enable AutoSave on Vim startup
+
+let g:auto_save_no_updatetime = 1  " do not change the 'updatetime' option
+
+let g:auto_save_in_insert_mode = 0  " do not save while in insert mode
 
 
 
