@@ -148,6 +148,17 @@ let g:auto_save_in_insert_mode = 0  " do not save while in insert mode
 " vim-airline-themes
 " vim-flake8
 " YouCompleteMe
-" surround
 " tcomment
+" ack.vim
+" vim-commentary  
+" vim-flake8	   
+" ag.vim	   		     
+" vim-auto-save	   
+" vim-easytags    
+" vim-fugitive  
+" vim-rails
+" vim-endwise	   
+" vim-misc	 
+" vim-surround
+
 
