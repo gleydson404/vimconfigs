@@ -13,6 +13,8 @@ let g:ycm_python_binary_path = '/usr/bin/python2'
 " paste and copy outside vim
 set clipboard=unnamedplus
 
+set encoding=utf-8
+" setting enconding to utf-8
 
 " rt-p config
 set runtimepath^=~/.vim/bundle/ctrlp.vim
@@ -104,7 +106,7 @@ autocmd BufNewFile,BufReadPost *.aiml set filetype=xml
 " nmap <CR> o<Esc>
 " insert a line with enter, withou enter in mode insert
 
-set guifont=DejaVu\ Sans\ Mono\ Bold\ 11 
+set guifont=DejaVu\ Sans\ Mono\ for\ Powerline\ Bold\ 11 
 "seting font and font-size
 
 let g:UltiSnipsSnippetDirectories=["UltiSnips"]
@@ -131,6 +133,22 @@ let g:auto_save = 1  " enable AutoSave on Vim startup
 let g:auto_save_no_updatetime = 1  " do not change the 'updatetime' option
 
 let g:auto_save_in_insert_mode = 0  " do not save while in insert mode
+
+" poweline configs
+let g:airline_powerline_fonts = 1
+let g:airline#extensions#tabline#enabled = 1
+
+let g:airline#extensions#tabline#left_sep = ' '
+let g:airline#extensions#tabline#left_alt_sep = '|'
+
+
+" removing menu and toolbar for gvim
+
+:set guioptions -=m 
+:set guioptions -=T
+:set guioptions -=t
+:set guioptions -=r
+:set guioptions -=L
 
 
 
