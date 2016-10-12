@@ -138,9 +138,6 @@ let g:auto_save_in_insert_mode = 0  " do not save while in insert mode
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
 
-let g:airline#extensions#tabline#left_sep = ' '
-let g:airline#extensions#tabline#left_alt_sep = '|'
-
 
 " removing menu and toolbar for gvim
 
