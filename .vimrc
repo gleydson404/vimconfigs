@@ -32,8 +32,9 @@ filetype plugin indent on
 " solarized dark theme
 syntax on
 set t_Co=16
-set background=dark
-colorscheme solarized
+" set background=dark
+" colorscheme solarized
+colorscheme base16-default-dark
 
 
 set number	
@@ -66,10 +67,13 @@ set smartindent
 " Enable smart-indent
 set smarttab	
 " Enable smart-tabs
-set softtabstop=4	
+set softtabstop=0	
 " Number of spaces per Tab
 au FileType ruby setl sw=2 sts=2 et
 " two spaces by ruby
+au FileType xml setl sw=2 sts=2 et
+" two spaces for xml
+set tabstop=8 expandtab
 
 set ruler	
 " Show row and column ruler information
@@ -147,7 +151,14 @@ let g:airline#extensions#tabline#enabled = 1
 :set guioptions -=r
 :set guioptions -=L
 
+set spell spelllang=pt_br
+" spell checking
 
+vnoremap // y/<C-R>"<CR>
+" search for visual selected text
+
+
+" g:vimtex_latexmk_enabled
 
 " plugins im using
 
@@ -177,4 +188,10 @@ let g:airline#extensions#tabline#enabled = 1
 " vim-surround
 
 
+" filenames like *.xml, *.html, *.xhtml, ...
+let g:closetag_filenames = "*.html,*.xhtml,*.phtml, *.xml, *.aiml"
 
+
+:iabbrev </ </<C-X><C-O>
+
+:imap <C-Space> <C-X><C-O>
