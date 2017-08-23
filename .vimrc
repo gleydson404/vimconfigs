@@ -34,40 +34,41 @@ syntax on
 set t_Co=16
 " set background=dark
 " colorscheme solarized
+let base16colorspace=256  " Access colors present in 256 colorspace
 colorscheme base16-default-dark
 
 
-set number	
+set number
 " Show line numbers
-set linebreak	
+set linebreak
 " Break lines at word (requires Wrap lines)
-set showbreak=+++	
+set showbreak=+++
 " Wrap-broken line prefix
-set textwidth=100	
+set textwidth=100
 " Line wrap (number of cols)
-set showmatch	
+set showmatch
 " Highlight matching brace
-set visualbell	
+set visualbell
 " Use visual bell (no beeping)
- 
-set hlsearch	
+
+set hlsearch
 " Highlight all search results
-set smartcase	
+set smartcase
 " Enable smart-case search
-set ignorecase	
+set ignorecase
 " Always case-insensitive
-set incsearch	
+set incsearch
 " Searches for strings incrementally
- 
-set autoindent	
+
+set autoindent
 " Auto-indent new lines
-set shiftwidth=4	
+set shiftwidth=4
 " Number of auto-indent spaces
-set smartindent	
+set smartindent
 " Enable smart-indent
-set smarttab	
+set smarttab
 " Enable smart-tabs
-set softtabstop=0	
+set softtabstop=0
 " Number of spaces per Tab
 au FileType ruby setl sw=2 sts=2 et
 " two spaces by ruby
@@ -75,13 +76,13 @@ au FileType xml setl sw=2 sts=2 et
 " two spaces for xml
 set tabstop=8 expandtab
 
-set ruler	
+set ruler
 " Show row and column ruler information
 
-set undolevels=1000	
+set undolevels=1000
 " Number of undo levels
 
-set backspace=indent,eol,start	
+set backspace=indent,eol,start
 " Backspace behaviour
 
 map <F9> :w<CR>:!python %<CR>
@@ -110,7 +111,8 @@ autocmd BufNewFile,BufReadPost *.aiml set filetype=xml
 " nmap <CR> o<Esc>
 " insert a line with enter, withou enter in mode insert
 
-set guifont=DejaVu\ Sans\ Mono\ for\ Powerline\ Bold\ 11 
+set guifont=DejaVu\ Sans\ Mono\ for\ Powerline\ Bold\ 11
+" set guifont=Inconsolata-g\ for\ Powerline\ g\ Bold\ 6
 "seting font and font-size
 
 let g:UltiSnipsSnippetDirectories=["UltiSnips"]
@@ -132,11 +134,11 @@ nnoremap <C-H> <C-W><C-H>
 
 nnoremap <leader>p oimport ipdb; ipdb.set_trace()<Esc>
 
-let g:auto_save = 1  " enable AutoSave on Vim startup
+" let g:auto_save = 1  " enable AutoSave on Vim startup
 
-let g:auto_save_no_updatetime = 1  " do not change the 'updatetime' option
+" let g:auto_save_no_updatetime = 1  " do not change the 'updatetime' option
 
-let g:auto_save_in_insert_mode = 0  " do not save while in insert mode
+" let g:auto_save_in_insert_mode = 0  " do not save while in insert mode
 
 " poweline configs
 let g:airline_powerline_fonts = 1
@@ -145,7 +147,7 @@ let g:airline#extensions#tabline#enabled = 1
 
 " removing menu and toolbar for gvim
 
-:set guioptions -=m 
+:set guioptions -=m
 :set guioptions -=T
 :set guioptions -=t
 :set guioptions -=r
@@ -176,15 +178,15 @@ vnoremap // y/<C-R>"<CR>
 " YouCompleteMe
 " tcomment
 " ack.vim
-" vim-commentary  
-" vim-flake8	   
-" ag.vim	   		     
-" vim-auto-save	   
-" vim-easytags    
-" vim-fugitive  
+" vim-commentary
+" vim-flake8
+" ag.vim
+" vim-auto-save
+" vim-easytags
+" vim-fugitive
 " vim-rails
-" vim-endwise	   
-" vim-misc	 
+" vim-endwise
+" vim-misc
 " vim-surround
 
 
@@ -195,3 +197,29 @@ let g:closetag_filenames = "*.html,*.xhtml,*.phtml, *.xml, *.aiml"
 :iabbrev </ </<C-X><C-O>
 
 :imap <C-Space> <C-X><C-O>
+
+set directory^=$HOME/.vim/tmp//
+"preventing vim to create .swp files in work directory
+
+"trim whitespace at the end of line
+autocmd BufWritePre * %s/\s\+$//e
+
+"syntastic syntaxe checker
+" set statusline+=%#warningmsg#
+" set statusline+=%{SyntasticStatuslineFlag()}
+" set statusline+=%*
+
+" let g:syntastic_always_populate_loc_list = 1
+" let g:syntastic_auto_loc_list = 1
+" let g:syntastic_check_on_open = 1
+" let g:syntastic_check_on_wq = 0
+
+" let g:syntastic_ruby_checkers = ['rubocop']
+"
+
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+let g:syntastic_ruby_checkers = ['rubocop']
