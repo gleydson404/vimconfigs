@@ -4,11 +4,25 @@ call pathogen#helptags()
 
 " nerdtrhee configs
 map <C-n> :NERDTreeToggle<CR>
-autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+
 autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | endif
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+
+let NERDTreeMinimalUI = 1
+let NERDTreeDirArrows = 1
+
+let g:nerdtree_tabs_open_on_console_startup = 2
+let g:nerdtree_tabs_autofind = 1
+let g:nerdtree_tabs_synchronize_view = 1
+let g:nerdtree_tabs_synchronize_focus = 1
+let g:nerdtree_tabs_autoclose = 1
+let g:nerdtree_tabs_open_on_new_tab = 1
+let NERDTreeIgnore = ['\.pyc$']
+
 
 " YCM python autocomplete
-let g:ycm_python_binary_path = '/usr/bin/python2'
+let g:ycm_python_binary_path = '/usr/bin/python3'
 
 " paste and copy outside vim
 set clipboard=unnamedplus
@@ -17,10 +31,10 @@ set encoding=utf-8
 " setting enconding to utf-8
 
 " rt-p config
-set runtimepath^=~/.vim/bundle/ctrlp.vim
+" set runtimepath^=~/.vim/bundle/ctrlp.vim
 
 
-syntax on
+" syntax on
 " Syntax highlinghting
 
 set laststatus=2
@@ -31,11 +45,12 @@ filetype plugin indent on
 
 " solarized dark theme
 syntax on
-set t_Co=16
+" set t_Co=16
 " set background=dark
 " colorscheme solarized
+
 let base16colorspace=256  " Access colors present in 256 colorspace
-colorscheme base16-default-dark
+colorscheme base16-gruvbox-dark-hard
 
 
 set number
@@ -92,7 +107,7 @@ set viminfo^=h
 " higlight match in search
 
 " Default mapping vim-multiple-cursors
-
+let g:multi_cursor_start_word_key      = '<C-d>'
 let g:multi_cursor_next_key='<C-d>'
 let g:multi_cursor_prev_key='<C-e>'
 let g:multi_cursor_skip_key='<C-x>'
@@ -120,7 +135,7 @@ let g:UltiSnipsExpandTrigger="<c-Space>"
 let g:UltiSnipsJumpForwardTrigger="<c-b>"
 let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
-nnoremap <leader>. :CtrlPTag<cr>
+" nnoremap <leader>. :CtrlPTag<cr>
 " ctrlp + ctags
 
 " navigate in vim splits
@@ -153,7 +168,7 @@ let g:airline#extensions#tabline#enabled = 1
 :set guioptions -=r
 :set guioptions -=L
 
-set spell spelllang=pt_br
+" set spell spelllang=pt_br
 " spell checking
 
 vnoremap // y/<C-R>"<CR>
@@ -204,22 +219,55 @@ set directory^=$HOME/.vim/tmp//
 "trim whitespace at the end of line
 autocmd BufWritePre * %s/\s\+$//e
 
-"syntastic syntaxe checker
-" set statusline+=%#warningmsg#
-" set statusline+=%{SyntasticStatuslineFlag()}
-" set statusline+=%*
-
-" let g:syntastic_always_populate_loc_list = 1
-" let g:syntastic_auto_loc_list = 1
-" let g:syntastic_check_on_open = 1
-" let g:syntastic_check_on_wq = 0
-
-" let g:syntastic_ruby_checkers = ['rubocop']
-"
 
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%{FugitiveStatusline()}
 set statusline+=%*
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 let g:syntastic_ruby_checkers = ['rubocop']
+
+nnoremap <Leader>a :Ack!<Space> ''
+
+let g:gtm_plugin_status_enabled = 1
+
+function! AirlineInit()
+  if exists('*GTMStatusline')
+    call airline#parts#define_function('gtmstatus', 'GTMStatusline')
+    let g:airline_section_b = airline#section#create([g:airline_section_b, ' ', '[', 'gtmstatus', ']'])
+  endif
+endfunction
+autocmd User AirlineAfterInit call AirlineInit()
+
+" Split rightward so as not to displace a left NERDTree
+let g:ack_mappings = {
+      \  'v': '<C-W><CR><C-W>L<C-W>p<C-W>J<C-W>p',
+      \ 'gv': '<C-W><CR><C-W>L<C-W>p<C-W>J' }
+
+
+let g:closetag_filenames = '*.html, *.xhtml, *.aiml, *.xml'
+
+" If installed using Homebrew
+set rtp+=/usr/local/opt/fzf
+map <C-p> :Files<CR>
+
+nnoremap <leader>d :Tags<cr>
+nnoremap <leader>. :BTags<cr>
+" fzf + ctags
+"
+nnoremap <leader>b :Buffers<cr>
+
+let g:rubycomplete_buffer_loading = 1
+
+let g:rubycomplete_buffer_loading = 1
+
+let g:rubycomplete_rails = 1
+" inoremap <C-Space> <C-x><C-o>
+" inoremap <C-@> <C-Space>
+set splitbelow
+set splitright
+if filereadable(expand("~/.vimrc_background"))
+  let base16colorspace=256
+  source ~/.vimrc_background
+endif
